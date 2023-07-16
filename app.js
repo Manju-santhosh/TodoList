@@ -15,10 +15,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 
-main().catch(err => console.log(err));
-async function main() {
-  await mongoose.connect(DB,{useNewUrlParser:true});
-}
+mongoose.connect(DB,{useNewUrlParser:true});
+
 
 const ItemsSchema = {
   name: String
