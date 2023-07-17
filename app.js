@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 
 mongoose.connect(DB,{useNewUrlParser:true});
-
+mongoose.Promise = global.Promise;
 
 const ItemsSchema = {
   name: String
