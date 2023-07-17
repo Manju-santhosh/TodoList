@@ -15,7 +15,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 
-mongoose.connect(DB,{useNewUrlParser:true});
+mongoose.connect(DB,{useNewUrlParser:true})
+.then(()=>{
+  console.log("sucess")
+})
 mongoose.Promise = global.Promise;
 
 const ItemsSchema = {
