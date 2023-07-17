@@ -15,10 +15,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 
-mongoose.connect(DB,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+mongoose.connect(DB,{useNewUrlParser:true});
+
 
 const ItemsSchema = {
   name: String
