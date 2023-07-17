@@ -15,9 +15,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 
-mongoose.connect(DB,{useNewUrlParser:true})
+
+mongoose.connect(DB,{useNewUrlParser:true},60000)
 .then(()=>{
-  console.log("sucess")
+  console.log("success")
 })
 mongoose.Promise = global.Promise;
 
