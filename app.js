@@ -1,10 +1,10 @@
-const dotenv =require("dotenv");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 
-dotenv.config({path :"./config.env"});
+
 const DB = process.env.DATABASE;
 const PORT = process.env.PORT;
 const app = express();
@@ -21,6 +21,10 @@ mongoose.connect(DB,{useNewUrlParser:true},60000)
   console.log("success")
 })
 mongoose.Promise = global.Promise;
+
+const dotenv =require("dotenv");
+dotenv.config({path :"./config.env"});
+
 
 const ItemsSchema = {
   name: String
