@@ -1,7 +1,7 @@
 const dotenv =require("dotenv");
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require('./mongoconnection');
+const mongoose = require("mongoose");
 const _ = require("lodash");
 
 dotenv.config({path :"./config.env"});
@@ -15,8 +15,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 
-mongoose.connect(DB,{useNewUrlParser:true});
-
+mongoose.connect(DB,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
 
 const ItemsSchema = {
   name: String
