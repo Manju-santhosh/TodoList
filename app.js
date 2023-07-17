@@ -1,12 +1,12 @@
-
+const dotenv =require("dotenv");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 
-
+dotenv.config({path :"./config.env"});
 const DB = process.env.DATABASE;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ||3000
 const app = express();
 
 app.set('view engine','ejs');
@@ -14,17 +14,22 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(DB);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
 
 
 mongoose.connect(DB,{useNewUrlParser:true},60000)
 .then(()=>{
-  console.log("success")
+  console.log("sucess")
 })
 mongoose.Promise = global.Promise;
-
-const dotenv =require("dotenv");
-dotenv.config({path :"./config.env"});
-
 
 const ItemsSchema = {
   name: String
